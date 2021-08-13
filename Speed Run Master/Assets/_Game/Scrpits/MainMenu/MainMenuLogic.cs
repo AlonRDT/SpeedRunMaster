@@ -32,6 +32,22 @@ public class MainMenuLogic : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(m_MainMenuFirstButton);
     }
 
+    public void MenuBack()
+    {
+        if (m_PanelChooseLevel.activeInHierarchy == true)
+        {
+            CloseChooseLevel();
+        }
+        else if (m_PanelHighScores.activeInHierarchy == true)
+        {
+            CloseHighScores();
+        }
+        else if (m_PanelRewatch.activeInHierarchy == true)
+        {
+            CloseRewatch();
+        }
+    }
+
     public void OpenChooseLevel()
     {
         m_PanelChooseLevel.SetActive(true);

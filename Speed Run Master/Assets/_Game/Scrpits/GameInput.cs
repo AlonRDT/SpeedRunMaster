@@ -59,14 +59,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""MenuChoose"",
-                    ""type"": ""Button"",
-                    ""id"": ""454a695b-f1bc-45ab-bf23-da1b67ceb382"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""MenuBack"",
                     ""type"": ""Button"",
                     ""id"": ""e01315f1-1662-454e-bea6-c25a40f9580b"",
@@ -75,18 +67,10 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""TurnCameraHorizontal"",
-                    ""type"": ""Value"",
-                    ""id"": ""3603a297-057d-44d4-83bd-26ded85850fb"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""TurnCameraVertical"",
+                    ""name"": ""TurnCamera"",
                     ""type"": ""Value"",
                     ""id"": ""0be06b1d-f3f8-4984-85b9-eb347e10800b"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -94,7 +78,15 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""name"": ""TurnCar"",
                     ""type"": ""Value"",
                     ""id"": ""7f3a3995-f77b-4c4c-a6a1-d968463a7bad"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""OpenPauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""6a3f825e-15ed-4345-b323-e4a04383ab51"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -234,19 +226,8 @@ public class @GameInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9c324c4c-96b3-46e8-bfec-afaae48cb3e8"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MenuChoose"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f89ab274-c965-4e16-8111-6e7191a93cca"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -256,56 +237,166 @@ public class @GameInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4c40473f-add0-4891-88d8-22fe19588e37"",
-                    ""path"": ""<Gamepad>/rightStick/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCameraHorizontal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""af6b4f88-32ee-4136-9767-fe474bd4ea4e"",
-                    ""path"": ""<Mouse>/delta/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCameraHorizontal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""763ddbb8-670c-48a9-affb-58b8966b5136"",
-                    ""path"": ""<Gamepad>/rightStick/y"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""TurnCameraVertical"",
+                    ""action"": ""TurnCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""d151b1a4-537b-4641-b574-f1a1d619d83f"",
-                    ""path"": ""<Mouse>/delta/y"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""TurnCameraVertical"",
+                    ""action"": ""TurnCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""7a8a59d3-ce4f-46a3-b643-e676dfa2e73a"",
-                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""16975270-5b00-406e-8f34-aa05f85f4771"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b5d76b1f-836a-416f-85d5-a58ddc05b837"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""9d833351-8757-44c7-96b9-0b1b514fed53"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""f7d2b1fc-b4a0-46ca-bb79-d0a7469f1259"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""a0075761-ca14-43d9-8c2a-1fb00058be7b"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrows"",
+                    ""id"": ""e7c664ba-e260-4bb0-8bca-5de166d788c8"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""0cf91a62-8ab0-4399-985f-b267e6886fbc"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""8324154e-df48-4746-8f14-4ab378c63a5b"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""7223545e-13ed-4dee-bdb3-34f39033e176"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""230b25f2-9860-44e3-b294-afef16f07b4d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1149fe5-87f8-4281-a865-c61ad79a220a"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenPauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb71a46e-2813-40a8-b9c4-a677883bcbdd"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenPauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -321,11 +412,10 @@ public class @GameInput : IInputActionCollection, IDisposable
         m_Gameplay_ActivatePickup = m_Gameplay.FindAction("ActivatePickup", throwIfNotFound: true);
         m_Gameplay_SwitchPickup = m_Gameplay.FindAction("SwitchPickup", throwIfNotFound: true);
         m_Gameplay_Break = m_Gameplay.FindAction("Break", throwIfNotFound: true);
-        m_Gameplay_MenuChoose = m_Gameplay.FindAction("MenuChoose", throwIfNotFound: true);
         m_Gameplay_MenuBack = m_Gameplay.FindAction("MenuBack", throwIfNotFound: true);
-        m_Gameplay_TurnCameraHorizontal = m_Gameplay.FindAction("TurnCameraHorizontal", throwIfNotFound: true);
-        m_Gameplay_TurnCameraVertical = m_Gameplay.FindAction("TurnCameraVertical", throwIfNotFound: true);
+        m_Gameplay_TurnCamera = m_Gameplay.FindAction("TurnCamera", throwIfNotFound: true);
         m_Gameplay_TurnCar = m_Gameplay.FindAction("TurnCar", throwIfNotFound: true);
+        m_Gameplay_OpenPauseMenu = m_Gameplay.FindAction("OpenPauseMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -380,11 +470,10 @@ public class @GameInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_ActivatePickup;
     private readonly InputAction m_Gameplay_SwitchPickup;
     private readonly InputAction m_Gameplay_Break;
-    private readonly InputAction m_Gameplay_MenuChoose;
     private readonly InputAction m_Gameplay_MenuBack;
-    private readonly InputAction m_Gameplay_TurnCameraHorizontal;
-    private readonly InputAction m_Gameplay_TurnCameraVertical;
+    private readonly InputAction m_Gameplay_TurnCamera;
     private readonly InputAction m_Gameplay_TurnCar;
+    private readonly InputAction m_Gameplay_OpenPauseMenu;
     public struct GameplayActions
     {
         private @GameInput m_Wrapper;
@@ -394,11 +483,10 @@ public class @GameInput : IInputActionCollection, IDisposable
         public InputAction @ActivatePickup => m_Wrapper.m_Gameplay_ActivatePickup;
         public InputAction @SwitchPickup => m_Wrapper.m_Gameplay_SwitchPickup;
         public InputAction @Break => m_Wrapper.m_Gameplay_Break;
-        public InputAction @MenuChoose => m_Wrapper.m_Gameplay_MenuChoose;
         public InputAction @MenuBack => m_Wrapper.m_Gameplay_MenuBack;
-        public InputAction @TurnCameraHorizontal => m_Wrapper.m_Gameplay_TurnCameraHorizontal;
-        public InputAction @TurnCameraVertical => m_Wrapper.m_Gameplay_TurnCameraVertical;
+        public InputAction @TurnCamera => m_Wrapper.m_Gameplay_TurnCamera;
         public InputAction @TurnCar => m_Wrapper.m_Gameplay_TurnCar;
+        public InputAction @OpenPauseMenu => m_Wrapper.m_Gameplay_OpenPauseMenu;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -423,21 +511,18 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @Break.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBreak;
                 @Break.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBreak;
                 @Break.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBreak;
-                @MenuChoose.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenuChoose;
-                @MenuChoose.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenuChoose;
-                @MenuChoose.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenuChoose;
                 @MenuBack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenuBack;
                 @MenuBack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenuBack;
                 @MenuBack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenuBack;
-                @TurnCameraHorizontal.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCameraHorizontal;
-                @TurnCameraHorizontal.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCameraHorizontal;
-                @TurnCameraHorizontal.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCameraHorizontal;
-                @TurnCameraVertical.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCameraVertical;
-                @TurnCameraVertical.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCameraVertical;
-                @TurnCameraVertical.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCameraVertical;
+                @TurnCamera.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCamera;
+                @TurnCamera.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCamera;
+                @TurnCamera.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCamera;
                 @TurnCar.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCar;
                 @TurnCar.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCar;
                 @TurnCar.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTurnCar;
+                @OpenPauseMenu.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenPauseMenu;
+                @OpenPauseMenu.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenPauseMenu;
+                @OpenPauseMenu.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenPauseMenu;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -457,21 +542,18 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @Break.started += instance.OnBreak;
                 @Break.performed += instance.OnBreak;
                 @Break.canceled += instance.OnBreak;
-                @MenuChoose.started += instance.OnMenuChoose;
-                @MenuChoose.performed += instance.OnMenuChoose;
-                @MenuChoose.canceled += instance.OnMenuChoose;
                 @MenuBack.started += instance.OnMenuBack;
                 @MenuBack.performed += instance.OnMenuBack;
                 @MenuBack.canceled += instance.OnMenuBack;
-                @TurnCameraHorizontal.started += instance.OnTurnCameraHorizontal;
-                @TurnCameraHorizontal.performed += instance.OnTurnCameraHorizontal;
-                @TurnCameraHorizontal.canceled += instance.OnTurnCameraHorizontal;
-                @TurnCameraVertical.started += instance.OnTurnCameraVertical;
-                @TurnCameraVertical.performed += instance.OnTurnCameraVertical;
-                @TurnCameraVertical.canceled += instance.OnTurnCameraVertical;
+                @TurnCamera.started += instance.OnTurnCamera;
+                @TurnCamera.performed += instance.OnTurnCamera;
+                @TurnCamera.canceled += instance.OnTurnCamera;
                 @TurnCar.started += instance.OnTurnCar;
                 @TurnCar.performed += instance.OnTurnCar;
                 @TurnCar.canceled += instance.OnTurnCar;
+                @OpenPauseMenu.started += instance.OnOpenPauseMenu;
+                @OpenPauseMenu.performed += instance.OnOpenPauseMenu;
+                @OpenPauseMenu.canceled += instance.OnOpenPauseMenu;
             }
         }
     }
@@ -483,10 +565,9 @@ public class @GameInput : IInputActionCollection, IDisposable
         void OnActivatePickup(InputAction.CallbackContext context);
         void OnSwitchPickup(InputAction.CallbackContext context);
         void OnBreak(InputAction.CallbackContext context);
-        void OnMenuChoose(InputAction.CallbackContext context);
         void OnMenuBack(InputAction.CallbackContext context);
-        void OnTurnCameraHorizontal(InputAction.CallbackContext context);
-        void OnTurnCameraVertical(InputAction.CallbackContext context);
+        void OnTurnCamera(InputAction.CallbackContext context);
         void OnTurnCar(InputAction.CallbackContext context);
+        void OnOpenPauseMenu(InputAction.CallbackContext context);
     }
 }
