@@ -293,7 +293,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""9d833351-8757-44c7-96b9-0b1b514fed53"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/rightAlt"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
