@@ -7,6 +7,7 @@ public class CameraLogic : MonoBehaviour
     [SerializeField] private float m_ReturnCameraToDefaultPositionSpeed;
     [SerializeField] private float m_MoveCameraSpeed;
     [SerializeField] private GameObject m_YRotationBase;
+    [SerializeField] private float m_MaxYLook;
     private GameInput m_Input;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class CameraLogic : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //since the different axis rotations affect one another it is better to separate the movemennt to two different objects each moving along only one axis
         Vector2 cameraMovementVector = m_Input.Gameplay.TurnCamera.ReadValue<Vector2>();
 
         if (cameraMovementVector.x == 0 && cameraMovementVector.y == 0)
@@ -27,7 +29,11 @@ public class CameraLogic : MonoBehaviour
         }
         else
         {
-            transform.Rotate(new Vector2(-cameraMovementVector.y, 0) * m_MoveCameraSpeed, Space.Self);
+            if (transform.localRotation.eulerAngles.x < m_MaxYLook || transform.localRotation.eulerAngles.x > 360 - m_MaxYLook)
+            {
+                transform.Rotate(new Vector2(-cameraMovementVector.y, 0) * m_MoveCameraSpeed, Space.Self);
+            }
+
             m_YRotationBase.transform.Rotate(new Vector2(0, cameraMovementVector.x) * m_MoveCameraSpeed, Space.Self);
         }
     }
