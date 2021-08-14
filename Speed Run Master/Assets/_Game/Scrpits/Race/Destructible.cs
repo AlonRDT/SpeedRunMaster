@@ -6,12 +6,10 @@ public class Destructible : MonoBehaviour
 {
     [SerializeField] private GameObject m_MarkerBase;
     private bool m_IsTargeted;
-    private Transform m_PlayerTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_PlayerTransform = GameObject.Find("Player").transform;
         StopTarget();
     }
 
@@ -20,7 +18,7 @@ public class Destructible : MonoBehaviour
     {
         if(m_IsTargeted == true)
         {
-            m_MarkerBase.transform.LookAt(m_PlayerTransform);
+            m_MarkerBase.transform.LookAt(Camera.main.transform);
             m_MarkerBase.transform.Rotate(new Vector3(0, -90, 0));
         }
     }
