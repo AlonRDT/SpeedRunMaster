@@ -8,6 +8,7 @@ public class MissileLogic : MonoBehaviour
     private Transform m_TargetTransform;
     private Rigidbody m_RigidBody;
 
+    [SerializeField] private GameObject m_ExplosionPrefab;
     [SerializeField] private float m_TurnSpeed;
     [SerializeField] private float m_FlySpeed;
 
@@ -29,24 +30,35 @@ public class MissileLogic : MonoBehaviour
             {
                 explode();
             }
-        }
-        else
-        {
-            m_RigidBody.velocity = transform.forward * m_FlySpeed;
+            else
+            {
+                m_RigidBody.velocity = transform.forward * m_FlySpeed;
 
-            Quaternion rocketTargetRot = Quaternion.LookRotation(m_TargetTransform.position - transform.position);
-            m_RigidBody.MoveRotation(Quaternion.RotateTowards(transform.rotation, rocketTargetRot, m_TurnSpeed));
+                Quaternion rocketTargetRot = Quaternion.LookRotation(m_TargetTransform.position - transform.position);
+                m_RigidBody.MoveRotation(Quaternion.RotateTowards(transform.rotation, rocketTargetRot, m_TurnSpeed));
+            }
         }
+        
     }
 
     private void explode()
     {
         Destroy(gameObject);
+        Destroy(Instantiate(m_ExplosionPrefab, transform.position, Quaternion.identity), 3);
     }
 
     public void Initialize(Transform target)
     {
         m_TargetTransform = target;
         m_IsInitialized = true;
+        //Debug.Log(target.name);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Destructible")
+        {
+            explode();
+        }
     }
 }

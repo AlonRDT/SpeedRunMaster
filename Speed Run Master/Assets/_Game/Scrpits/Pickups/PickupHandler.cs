@@ -19,11 +19,6 @@ public class PickupHandler : MonoBehaviour
         m_PickupImage.sprite = m_PickupSprites[0];
         m_CurrentPickupIndex = -1;
         m_ActionInProgress = false;
-
-        foreach (var pickup in m_Weapons)
-        {
-            pickup.IncreaseAmmo();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
