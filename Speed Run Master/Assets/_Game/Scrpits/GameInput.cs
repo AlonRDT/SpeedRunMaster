@@ -19,8 +19,8 @@ public class @GameInput : IInputActionCollection, IDisposable
             ""id"": ""08f428df-77ec-45f2-8493-9485f6ea0752"",
             ""actions"": [
                 {
-                    ""name"": ""Gas"",
-                    ""type"": ""Button"",
+                    ""name"": ""MoveCar"",
+                    ""type"": ""Value"",
                     ""id"": ""bdb9a3e7-606f-4347-9ca2-41612ab74a5e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -78,7 +78,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""name"": ""TurnCar"",
                     ""type"": ""Value"",
                     ""id"": ""7f3a3995-f77b-4c4c-a6a1-d968463a7bad"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -93,37 +93,103 @@ public class @GameInput : IInputActionCollection, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""0e871cc4-bf6b-4700-9ff3-8ecdfec0e689"",
+                    ""name"": ""Controller"",
+                    ""id"": ""8024b4e4-9516-4616-afdf-67b4de606377"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCar"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""b01f4f14-ce75-4859-822e-a8e004caac30"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""21fd516f-4e09-401e-bf40-a5abc2b4e9f5"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Gas"",
+                    ""action"": ""MoveCar"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""7d542161-087b-4aef-ba17-21e31ff85ea5"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""name"": ""Arrows"",
+                    ""id"": ""e5c81eae-27f0-40d9-b507-b88044f0b451"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Gas"",
-                    ""isComposite"": false,
+                    ""action"": ""MoveCar"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""c17fac28-971e-4207-9d64-1b0a4f4d31ea"",
+                    ""name"": ""negative"",
+                    ""id"": ""f1dd5376-99ab-4427-bb38-6497e9ff761f"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""6a77c445-09e9-42a8-978f-c8db8163489a"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Gas"",
+                    ""action"": ""MoveCar"",
                     ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""a654f75f-47a9-4d96-a8e0-e8c38cc1d48d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCar"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""c36dc7e7-14c7-49a2-bafa-b4b04485c766"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""9e6dc757-2881-43a2-95f5-dc6797ad82e7"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -205,18 +271,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""78b96ffd-908a-4b0f-8826-ce7af42045e0"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Break"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1395b547-7566-4135-a0d7-2904432091c2"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -259,127 +314,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7a8a59d3-ce4f-46a3-b643-e676dfa2e73a"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": ""NormalizeVector2,StickDeadzone"",
-                    ""groups"": """",
-                    ""action"": ""TurnCar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""WASD"",
-                    ""id"": ""16975270-5b00-406e-8f34-aa05f85f4771"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCar"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""b5d76b1f-836a-416f-85d5-a58ddc05b837"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""9d833351-8757-44c7-96b9-0b1b514fed53"",
-                    ""path"": ""<Keyboard>/rightAlt"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""f7d2b1fc-b4a0-46ca-bb79-d0a7469f1259"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""a0075761-ca14-43d9-8c2a-1fb00058be7b"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Arrows"",
-                    ""id"": ""e7c664ba-e260-4bb0-8bca-5de166d788c8"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCar"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""0cf91a62-8ab0-4399-985f-b267e6886fbc"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""8324154e-df48-4746-8f14-4ab378c63a5b"",
-                    ""path"": ""<Keyboard>/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""7223545e-13ed-4dee-bdb3-34f39033e176"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""230b25f2-9860-44e3-b294-afef16f07b4d"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnCar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
                     ""id"": ""e1149fe5-87f8-4281-a865-c61ad79a220a"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
@@ -399,6 +333,83 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""action"": ""OpenPauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f04eaa5-1fbe-4feb-8bcf-038bd62ee818"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""interactions"": """",
+                    ""processors"": ""AxisDeadzone"",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""b5697516-1f24-4a95-a8c0-d41432249ada"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""4b45699a-5f3d-4e76-bb18-91132a6ea6de"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1b5c1b06-8b8b-49bd-ae79-7a79eab747af"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrows"",
+                    ""id"": ""3b865819-2946-4446-a1e4-45f3e7e2e3ff"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""3e5e1c79-6f5c-4ddc-bfa0-7970ea2d491b"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""7f3d9e7a-cbb5-4401-9d0d-ed087310b152"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -407,7 +418,7 @@ public class @GameInput : IInputActionCollection, IDisposable
 }");
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
-        m_Gameplay_Gas = m_Gameplay.FindAction("Gas", throwIfNotFound: true);
+        m_Gameplay_MoveCar = m_Gameplay.FindAction("MoveCar", throwIfNotFound: true);
         m_Gameplay_Nitro = m_Gameplay.FindAction("Nitro", throwIfNotFound: true);
         m_Gameplay_ActivatePickup = m_Gameplay.FindAction("ActivatePickup", throwIfNotFound: true);
         m_Gameplay_SwitchPickup = m_Gameplay.FindAction("SwitchPickup", throwIfNotFound: true);
@@ -465,7 +476,7 @@ public class @GameInput : IInputActionCollection, IDisposable
     // Gameplay
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
-    private readonly InputAction m_Gameplay_Gas;
+    private readonly InputAction m_Gameplay_MoveCar;
     private readonly InputAction m_Gameplay_Nitro;
     private readonly InputAction m_Gameplay_ActivatePickup;
     private readonly InputAction m_Gameplay_SwitchPickup;
@@ -478,7 +489,7 @@ public class @GameInput : IInputActionCollection, IDisposable
     {
         private @GameInput m_Wrapper;
         public GameplayActions(@GameInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Gas => m_Wrapper.m_Gameplay_Gas;
+        public InputAction @MoveCar => m_Wrapper.m_Gameplay_MoveCar;
         public InputAction @Nitro => m_Wrapper.m_Gameplay_Nitro;
         public InputAction @ActivatePickup => m_Wrapper.m_Gameplay_ActivatePickup;
         public InputAction @SwitchPickup => m_Wrapper.m_Gameplay_SwitchPickup;
@@ -496,9 +507,9 @@ public class @GameInput : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_GameplayActionsCallbackInterface != null)
             {
-                @Gas.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnGas;
-                @Gas.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnGas;
-                @Gas.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnGas;
+                @MoveCar.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMoveCar;
+                @MoveCar.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMoveCar;
+                @MoveCar.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMoveCar;
                 @Nitro.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnNitro;
                 @Nitro.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnNitro;
                 @Nitro.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnNitro;
@@ -527,9 +538,9 @@ public class @GameInput : IInputActionCollection, IDisposable
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Gas.started += instance.OnGas;
-                @Gas.performed += instance.OnGas;
-                @Gas.canceled += instance.OnGas;
+                @MoveCar.started += instance.OnMoveCar;
+                @MoveCar.performed += instance.OnMoveCar;
+                @MoveCar.canceled += instance.OnMoveCar;
                 @Nitro.started += instance.OnNitro;
                 @Nitro.performed += instance.OnNitro;
                 @Nitro.canceled += instance.OnNitro;
@@ -560,7 +571,7 @@ public class @GameInput : IInputActionCollection, IDisposable
     public GameplayActions @Gameplay => new GameplayActions(this);
     public interface IGameplayActions
     {
-        void OnGas(InputAction.CallbackContext context);
+        void OnMoveCar(InputAction.CallbackContext context);
         void OnNitro(InputAction.CallbackContext context);
         void OnActivatePickup(InputAction.CallbackContext context);
         void OnSwitchPickup(InputAction.CallbackContext context);
