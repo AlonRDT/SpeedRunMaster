@@ -72,6 +72,8 @@ public class Pickup_MissileLauncher : Pickup
 
     private void findTarget()
     {
+        m_Targets.RemoveAll(a => a == null);
+
         Destructible newTarget = null;
         float shortestDistance = 1000000, currentDistance, objectMagnitude;
 
