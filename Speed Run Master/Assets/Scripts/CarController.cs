@@ -31,12 +31,26 @@ public class CarController : MonoBehaviour
 
     private GameInput m_Input;
 
+    [SerializeField] private int m_HistoryIndex;
+    [SerializeField] private GameManager m_Manager;
+    [SerializeField] private GameObject m_Camera;
+
     private void Start()
     {
+        if (m_Manager.CheckExistance(m_HistoryIndex) == false)
+        {
+            Destroy(gameObject);
+        }
+        else if (m_Manager.IsSetCameraActive(m_HistoryIndex) == true)
+        {
+            m_Camera.SetActive(true);
+        }
+
         Rb.centerOfMass = new Vector3(0, centerOfMass, 0);
         m_Input = new GameInput();
         m_Input.Enable();
     }
+
     private void FixedUpdate()
     {
         GetInput();
@@ -49,19 +63,48 @@ public class CarController : MonoBehaviour
     //gets the input of the keyboard/keypad
     private void GetInput()
     {
-        horizontalInput = m_Input.Gameplay.TurnCar.ReadValue<float>();
-        verticalInput = m_Input.Gameplay.MoveCar.ReadValue<float>();
+        if (m_HistoryIndex == -1)
+        {
+            horizontalInput = m_Input.Gameplay.TurnCar.ReadValue<float>();
+            if (horizontalInput > 0)
+            {
+                horizontalInput = 1;
+            }
+            else if(horizontalInput < 0)
+            {
+                horizontalInput = -1;
+            }
+            verticalInput = m_Input.Gameplay.MoveCar.ReadValue<float>();
+            if (verticalInput > 0)
+            {
+                verticalInput = 1;
+            }
+            else if (verticalInput < 0)
+            {
+                verticalInput = -1;
+            }
+        }
+        else
+        {
+            horizontalInput = m_Manager.GetHorizontalInput(m_HistoryIndex);
+            verticalInput = m_Manager.GetVerticalInput(m_HistoryIndex);
+            //Debug.Log(verticalInput);
+            isBreaking = m_Manager.GetBraking(m_HistoryIndex);
+        }
     }
 
     public void Break(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if (m_HistoryIndex == -1)
         {
-            isBreaking = true;
-        }
-        else if(context.phase == InputActionPhase.Canceled)
-        {
-            isBreaking = false;
+            if (context.phase == InputActionPhase.Started)
+            {
+                isBreaking = true;
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                isBreaking = false;
+            }
         }
     }
 
