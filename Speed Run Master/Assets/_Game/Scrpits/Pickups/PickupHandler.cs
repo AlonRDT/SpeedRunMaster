@@ -31,6 +31,7 @@ public class PickupHandler : MonoBehaviour
             {
                 SwitchWeapon();
             }
+            Destroy(other.gameObject);
         }
     }
 

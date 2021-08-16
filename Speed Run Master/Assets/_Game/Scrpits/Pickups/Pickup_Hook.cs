@@ -7,6 +7,12 @@ public class Pickup_Hook : Pickup
     [SerializeField] private GameObject m_Crosshair;
     [SerializeField] private GameObject m_GrappleStart;
     [SerializeField] private float m_LineLength;
+    [SerializeField] private float m_JointFinalMaxDistancePrecentage;
+    [SerializeField] private float m_JointDeltaMaxDistancePredentage;
+    [SerializeField] private float m_JointSpring;
+    [SerializeField] private float m_JointDamper;
+    [SerializeField] private float m_JointMassScale;
+    [SerializeField] private Vector3 m_JointAnchorLocation;
 
     private LineRenderer m_LineRenderer;
     private SpringJoint m_Spring;
@@ -30,31 +36,35 @@ public class Pickup_Hook : Pickup
         //get a point in front of camera at desired distance
         m_GrapplePoint = Camera.main.ViewportToWorldPoint(new Vector3(0.5F, 0.5F, 0)) + Camera.main.transform.forward * m_LineLength;
         m_Spring.connectedAnchor = m_GrapplePoint;
+        m_Spring.anchor = m_JointAnchorLocation;
 
         //the distance grapple will try to keep from grapple point
-        //m_Spring.maxDistance = m_LineLength * 0f;
-        //m_Spring.minDistance = m_LineLength * 0.1f;
+        m_Spring.maxDistance = m_LineLength * (1 - m_JointDeltaMaxDistancePredentage);
+
 
         //pull push power
-        m_Spring.spring = 3f;
-        m_Spring.damper = 2f;
-        //m_Spring.massScale = 1f;
+        m_Spring.spring = m_JointSpring;
+        m_Spring.damper = m_JointDamper;
+        m_Spring.massScale = m_JointMassScale;
 
         m_LineRenderer.positionCount = 2;
     }
 
     private void LateUpdate()
     {
-        drawRope();
+        if (m_Spring != null)
+        {
+            float distance = Vector3.Distance(transform.position, m_GrapplePoint);
+            m_Spring.maxDistance = Mathf.Max(distance - m_LineLength * m_JointDeltaMaxDistancePredentage, m_LineLength * m_JointFinalMaxDistancePrecentage);
+            drawRope();
+        }
     }
 
     private void drawRope()
     {
-        if(m_Spring != null)
-        {
-            m_LineRenderer.SetPosition(0, m_GrappleStart.transform.position);
-            m_LineRenderer.SetPosition(1, m_GrapplePoint);
-        }
+
+        m_LineRenderer.SetPosition(0, m_GrappleStart.transform.position);
+        m_LineRenderer.SetPosition(1, m_GrapplePoint);
     }
 
     public override void DeselectPickup()

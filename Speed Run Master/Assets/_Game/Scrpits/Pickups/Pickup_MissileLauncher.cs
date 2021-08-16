@@ -22,14 +22,20 @@ public class Pickup_MissileLauncher : Pickup
     public override void ActivatePickup()
     {
         base.ActivatePickup();
-        Instantiate(m_RocketPrefab, m_SpawnRocketTransform.position, m_SpawnRocketTransform.rotation).GetComponent<MissileLogic>().Initialize(m_CurrentTarget.transform);
+        if (m_CurrentTarget != null)
+        {
+            Instantiate(m_RocketPrefab, m_SpawnRocketTransform.position, m_SpawnRocketTransform.rotation).GetComponent<MissileLogic>().Initialize(m_CurrentTarget.transform);
+        }
     }
 
     public override void DeselectPickup()
     {
         m_IsSelected = false;
-        m_CurrentTarget.StopTarget();
-        m_CurrentTarget = null;
+        if (m_CurrentTarget != null)
+        {
+            m_CurrentTarget.StopTarget();
+            m_CurrentTarget = null;
+        }
     }
 
     public override void SelectPickup()
@@ -83,7 +89,7 @@ public class Pickup_MissileLauncher : Pickup
             objectMagnitude = Vector3.Distance(target.transform.position, Camera.main.transform.position);
             //distance between where caera is looking plus the distance between camera and object and the object
             currentDistance = Vector3.Distance((Camera.main.ViewportToWorldPoint(new Vector3(0.5F, 0.5F, 0)) + Camera.main.transform.forward * objectMagnitude), target.transform.position);
-            if(currentDistance < shortestDistance)
+            if (currentDistance < shortestDistance)
             {
                 shortestDistance = currentDistance;
                 newTarget = target;
@@ -92,14 +98,14 @@ public class Pickup_MissileLauncher : Pickup
 
         //Debug.Log(m_Targets[4].name);
 
-        if(m_CurrentTarget != newTarget)
+        if (m_CurrentTarget != newTarget)
         {
-            if(m_CurrentTarget != null)
+            if (m_CurrentTarget != null)
             {
                 m_CurrentTarget.StopTarget();
             }
 
-            if(newTarget != null)
+            if (newTarget != null)
             {
                 newTarget.StartTarget();
             }
@@ -110,6 +116,6 @@ public class Pickup_MissileLauncher : Pickup
 
     public override void DeactivatePickup()
     {
-       
+
     }
 }
