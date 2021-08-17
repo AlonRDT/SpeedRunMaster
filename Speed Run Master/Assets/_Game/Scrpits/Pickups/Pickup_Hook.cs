@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pickup_Hook : Pickup
 {
+    [SerializeField] private GameManager m_Manager;
     [SerializeField] private GameObject m_Crosshair;
     [SerializeField] private GameObject m_GrappleStart;
     [SerializeField] private float m_LineLength;
@@ -48,6 +49,8 @@ public class Pickup_Hook : Pickup
         m_Spring.massScale = m_JointMassScale;
 
         m_LineRenderer.positionCount = 2;
+
+        m_Manager.RegisterGrappling(true, m_GrapplePoint);
     }
 
     private void LateUpdate()
@@ -78,6 +81,35 @@ public class Pickup_Hook : Pickup
     }
 
     public override void DeactivatePickup()
+    {
+        m_LineRenderer.positionCount = 0;
+        Destroy(m_Spring);
+        m_Manager.RegisterGrappling(false, Vector3.zero);
+    }
+
+    public void ManualStartGrapple(Vector3 point)
+    {
+        m_Spring = m_Base.AddComponent<SpringJoint>();
+        //dont calculate automatically the anchor
+        m_Spring.autoConfigureConnectedAnchor = false;
+        //get a point in front of camera at desired distance
+        m_GrapplePoint = point;
+        m_Spring.connectedAnchor = m_GrapplePoint;
+        m_Spring.anchor = m_JointAnchorLocation;
+
+        //the distance grapple will try to keep from grapple point
+        m_Spring.maxDistance = m_LineLength * (1 - m_JointDeltaMaxDistancePredentage);
+
+
+        //pull push power
+        m_Spring.spring = m_JointSpring;
+        m_Spring.damper = m_JointDamper;
+        m_Spring.massScale = m_JointMassScale;
+
+        m_LineRenderer.positionCount = 2;
+    }
+
+    public void ManualStopGrapple()
     {
         m_LineRenderer.positionCount = 0;
         Destroy(m_Spring);

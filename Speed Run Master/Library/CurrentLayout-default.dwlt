@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Console
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 392}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 677, y: 342}
   m_MaxSize: {x: 12002, y: 8042}
   vertical: 0
-  controlID: 111
+  controlID: 68
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -271,8 +271,8 @@ MonoBehaviour:
     y: 0
     width: 924
     height: 442
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -329,10 +329,10 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
   m_ActionsTreeState:
-    scrollPos: {x: 0, y: 322}
-    m_SelectedIDs: 29da8859
-    m_LastClickedID: 1502140969
-    m_ExpandedIDs: 4ac1d29bfee0d69c35cbc6b5a57940be6f1297e77f6d18eb44bafd091fd8b90f92221813b0955813b8e67e156d2e3d1d122caa2fb450713474754151a01cc057c22fa658d131d466722cf66e85f23272265e387a593f4d7e
+    scrollPos: {x: 0, y: 376}
+    m_SelectedIDs: d19633d4
+    m_LastClickedID: -734816559
+    m_ExpandedIDs: 4ac1d29bfee0d69c35cbc6b5a57940be6f1297e77f6d18eb465660fd44bafd091fd8b90f92221813b0955813b8e67e156d2e3d1d122caa2fb450713474754151a01cc057c22fa658d131d466722cf66e85f23272265e387a593f4d7e
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -361,7 +361,7 @@ MonoBehaviour:
         scroll: {x: 0, y: 0}
       - itemId: 378383742
         selectedIndex: 0
-        scroll: {x: 0, y: 41.899994}
+        scroll: {x: 0, y: 0}
       - itemId: 82801685
         selectedIndex: 0
         scroll: {x: 0, y: 0}
@@ -505,6 +505,10 @@ MonoBehaviour:
       \"\"\n                },\n                {\n                    \"name\":
       \"OpenPauseMenu\",\n                    \"type\": \"Button\",\n                   
       \"id\": \"6a3f825e-15ed-4345-b323-e4a04383ab51\",\n                    \"expectedControlType\":
+      \"Button\",\n                    \"processors\": \"\",\n                   
+      \"interactions\": \"\"\n                },\n                {\n                   
+      \"name\": \"DebugSaveReplay\",\n                    \"type\": \"Button\",\n                   
+      \"id\": \"3e9e1eb5-7bfe-481b-8e82-b8adb11f65e8\",\n                    \"expectedControlType\":
       \"Button\",\n                    \"processors\": \"\",\n                   
       \"interactions\": \"\"\n                }\n            ],\n            \"bindings\":
       [\n                {\n                    \"name\": \"Controller\",\n                   
@@ -658,7 +662,18 @@ MonoBehaviour:
       \"interactions\": \"\",\n                    \"processors\": \"\",\n                   
       \"groups\": \"\",\n                    \"action\": \"TurnCar\",\n                   
       \"isComposite\": false,\n                    \"isPartOfComposite\": true\n               
-      }\n            ]\n        }\n    ],\n    \"controlSchemes\": []\n}"
+      },\n                {\n                    \"name\": \"\",\n                   
+      \"id\": \"6df2a14b-a198-4394-9e67-a2df48d5ff3b\",\n                    \"path\":
+      \"<Gamepad>/buttonNorth\",\n                    \"interactions\": \"\",\n                   
+      \"processors\": \"\",\n                    \"groups\": \"\",\n                   
+      \"action\": \"DebugSaveReplay\",\n                    \"isComposite\": false,\n                   
+      \"isPartOfComposite\": false\n                },\n                {\n                   
+      \"name\": \"\",\n                    \"id\": \"a45ed7e8-f16d-4106-92ed-81e43072e83f\",\n                   
+      \"path\": \"<Keyboard>/m\",\n                    \"interactions\": \"\",\n                   
+      \"processors\": \"\",\n                    \"groups\": \"\",\n                   
+      \"action\": \"DebugSaveReplay\",\n                    \"isComposite\": false,\n                   
+      \"isPartOfComposite\": false\n                }\n            ]\n        }\n   
+      ],\n    \"controlSchemes\": []\n}"
     m_IsDirty: 0
   m_Toolbar:
     m_IsDirty: 0
@@ -737,22 +752,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Game/Scrpits/Race
+    - Assets/_Game/Scrpits/Pickups
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/_Game/Scrpits/Race
+  - Assets/_Game/Scrpits/Pickups
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Projects\SpeedRunMaster\Speed Run Master
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 8}
-    m_SelectedIDs: fa410000
-    m_LastClickedID: 16890
-    m_ExpandedIDs: 00000000e2410000e4410000e6410000e8410000ea41000000ca9a3b
+    m_SelectedIDs: 6a5f0000
+    m_LastClickedID: 24426
+    m_ExpandedIDs: 00000000824900008449000086490000884900008a49000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -780,7 +795,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e2410000e4410000e6410000e8410000ea410000
+    m_ExpandedIDs: 00000000824900008449000086490000884900008a490000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -805,9 +820,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 80440000
-    m_LastClickedInstanceID: 17536
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -903,7 +918,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 6c94ffff9ea4ffffc6a6ffffe0b5ffff0ae2ffffeee2ffffdce3ffffeee4ffff24e6ffff22f9ffff4efbffff90420000fe420000c8430000e4430000e244000068450000c245000054470000bc470000644800000e4900001e490000264900008428010040290100f62c0100442d0100c82d010030300100be300100ce3101001c3f0100e84001000c410100dc4301006648010048a9010020ae0100
+      m_ExpandedIDs: b0c3ffff40f7ffff4efbfffff03f000058400000224100003e4100008e420000be420000184300003c430000b044000018450000c0450000f07a00001a7e0000ec7e0000fc7e000050810000ea810000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -963,9 +978,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 149.1203, y: 14.492947, z: 48.82969}
+    m_Target: {x: 117.626434, y: -25.927813, z: 52.76905}
     speed: 2
-    m_Value: {x: 149.1203, y: 14.492947, z: 48.82969}
+    m_Value: {x: 117.626434, y: -25.927813, z: 52.76905}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1012,9 +1027,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.06829548, y: -0.61227113, z: 0.05325774, w: -0.78597754}
+    m_Target: {x: -0.21446991, y: -0.5546836, z: 0.1507128, w: -0.78978}
     speed: 2
-    m_Value: {x: -0.06829079, y: -0.6122291, z: 0.053254083, w: -0.7859236}
+    m_Value: {x: -0.21445511, y: -0.55464536, z: 0.1507024, w: -0.7897255}
   m_Size:
     m_Target: 65.72044
     speed: 2

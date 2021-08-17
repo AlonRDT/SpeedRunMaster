@@ -5,69 +5,124 @@ using UnityEngine;
 public class HistoryData
 {
     public int MapIndex;
+    public float RaceTime;
     public float HorizontalInput;
     public float VerticalInput;
     public bool IsBraking;
+    public bool IsJump;
     public bool IsGrapple;
 
-    private List<int> m_ActionFrame = new List<int>();
+    private List<float> m_ActionTime = new List<float>();
     private List<int> m_ActionIndex = new List<int>();
     private List<int> m_ActionValue = new List<int>();
     private List<Vector3> m_HookGapplePoint = new List<Vector3>();
 
     private int m_CurrentArrayIndex;
+    private int m_CurrentGrappleIndex;
 
     public void Initialize()
     {
         m_CurrentArrayIndex = 0;
+        m_CurrentGrappleIndex = 0;
     }
 
-    public void LoadAction(int actionIndex, int frameIndex, int actionValue, Vector3 grapplePoint)
+    public void RegisterHorizontalAction(float actionTime, int actionValue)
     {
-        m_ActionIndex.Add(actionIndex);
-        m_ActionFrame.Add(frameIndex);
+        m_ActionIndex.Add(0);
+        m_ActionTime.Add(actionTime);
         m_ActionValue.Add(actionValue);
+    }
 
-        //Debug.Log(actionIndex);
-        //Debug.Log(actionValue);
+    public void RegisterVerticalAction(float actionTime, int actionValue)
+    {
+        //Debug.Log(actionTime);
+        m_ActionIndex.Add(1);
+        m_ActionTime.Add(actionTime);
+        m_ActionValue.Add(actionValue);
+    }
 
-        if (actionIndex == 3 && actionValue == 1)
+    public void RegisterBrakeAction(float ActionTime, bool start)
+    {
+        //Debug.Log("break " + start);
+        m_ActionIndex.Add(2);
+        m_ActionTime.Add(ActionTime);
+        if (start == true)
         {
-            m_HookGapplePoint.Add(grapplePoint);
+            m_ActionValue.Add(1);
+        }
+        else
+        {
+            m_ActionValue.Add(0);
         }
     }
 
-    public bool ApplyAction(int frameIndex)
+    public void RegisterJumpAction(float ActionTime, bool start)
     {
-        bool output = false;
-
-        if (m_ActionFrame.Count > m_CurrentArrayIndex)
+        //Debug.Log("jump " + start);
+        m_ActionIndex.Add(3);
+        m_ActionTime.Add(ActionTime);
+        if (start == true)
         {
-            if (m_ActionFrame[m_CurrentArrayIndex] == frameIndex)
+            m_ActionValue.Add(1);
+        }
+        else
+        {
+            m_ActionValue.Add(0);
+        }
+    }
+
+    public void ResgterGrappleAction(float ActionTime, bool start, Vector3 grapplePoint)
+    {
+        //Debug.Log("grapple " + start);
+        m_ActionIndex.Add(4);
+        m_ActionTime.Add(ActionTime);
+        if (start == true)
+        {
+            m_ActionValue.Add(1);
+            m_HookGapplePoint.Add(grapplePoint);
+        }
+        else
+        {
+            m_ActionValue.Add(0);
+        }
+    }
+
+    public int ApplyAction(float timeElapsesd)
+    {
+        int output = -1;
+        //Debug.Log(m_CurrentArrayIndex);
+        if (m_ActionIndex.Count > m_CurrentArrayIndex)
+        {
+            if (timeElapsesd >= m_ActionTime[m_CurrentArrayIndex])
             {
-                //Debug.Log(m_CurrentArrayIndex);
+                //Debug.Log(m_ActionTime[m_CurrentArrayIndex] + " > " + timeElapsesd);
 
                 switch (m_ActionIndex[m_CurrentArrayIndex])
                 {
                     case 0:
                         HorizontalInput = m_ActionValue[m_CurrentArrayIndex];
-                        output = true;
+                        output = 0;
                         m_CurrentArrayIndex++;
                         break;
                     case 1:
                         VerticalInput = m_ActionValue[m_CurrentArrayIndex];
                         //Debug.Log(VerticalInput);
-                        output = true;
+                        output = 1;
                         m_CurrentArrayIndex++;
                         break;
                     case 2:
                         IsBraking = m_ActionValue[m_CurrentArrayIndex] == 1;
-                        output = true;
+                        output = 2;
                         m_CurrentArrayIndex++;
                         break;
                     case 3:
+                        IsJump = m_ActionValue[m_CurrentArrayIndex] == 1;
+                        output = 3;
+                        m_CurrentArrayIndex++;
+                        break;
+                    case 4:
                         IsGrapple = m_ActionValue[m_CurrentArrayIndex] == 1;
-                        output = true;
+                        output = 4;
                         m_CurrentArrayIndex++;
                         break;
                     default:
@@ -77,5 +132,11 @@ public class HistoryData
         }
 
         return output;
+    }
+
+    public Vector3 GetGrapplePoint()
+    {
+        m_CurrentGrappleIndex++;
+        return m_HookGapplePoint[m_CurrentGrappleIndex - 1];
     }
 }

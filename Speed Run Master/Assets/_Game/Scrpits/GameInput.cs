@@ -89,6 +89,14 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugSaveReplay"",
+                    ""type"": ""Button"",
+                    ""id"": ""3e9e1eb5-7bfe-481b-8e82-b8adb11f65e8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -410,6 +418,28 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""action"": ""TurnCar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6df2a14b-a198-4394-9e67-a2df48d5ff3b"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugSaveReplay"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a45ed7e8-f16d-4106-92ed-81e43072e83f"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugSaveReplay"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -427,6 +457,7 @@ public class @GameInput : IInputActionCollection, IDisposable
         m_Gameplay_TurnCamera = m_Gameplay.FindAction("TurnCamera", throwIfNotFound: true);
         m_Gameplay_TurnCar = m_Gameplay.FindAction("TurnCar", throwIfNotFound: true);
         m_Gameplay_OpenPauseMenu = m_Gameplay.FindAction("OpenPauseMenu", throwIfNotFound: true);
+        m_Gameplay_DebugSaveReplay = m_Gameplay.FindAction("DebugSaveReplay", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -485,6 +516,7 @@ public class @GameInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_TurnCamera;
     private readonly InputAction m_Gameplay_TurnCar;
     private readonly InputAction m_Gameplay_OpenPauseMenu;
+    private readonly InputAction m_Gameplay_DebugSaveReplay;
     public struct GameplayActions
     {
         private @GameInput m_Wrapper;
@@ -498,6 +530,7 @@ public class @GameInput : IInputActionCollection, IDisposable
         public InputAction @TurnCamera => m_Wrapper.m_Gameplay_TurnCamera;
         public InputAction @TurnCar => m_Wrapper.m_Gameplay_TurnCar;
         public InputAction @OpenPauseMenu => m_Wrapper.m_Gameplay_OpenPauseMenu;
+        public InputAction @DebugSaveReplay => m_Wrapper.m_Gameplay_DebugSaveReplay;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -534,6 +567,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @OpenPauseMenu.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenPauseMenu;
                 @OpenPauseMenu.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenPauseMenu;
                 @OpenPauseMenu.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenPauseMenu;
+                @DebugSaveReplay.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDebugSaveReplay;
+                @DebugSaveReplay.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDebugSaveReplay;
+                @DebugSaveReplay.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDebugSaveReplay;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -565,6 +601,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @OpenPauseMenu.started += instance.OnOpenPauseMenu;
                 @OpenPauseMenu.performed += instance.OnOpenPauseMenu;
                 @OpenPauseMenu.canceled += instance.OnOpenPauseMenu;
+                @DebugSaveReplay.started += instance.OnDebugSaveReplay;
+                @DebugSaveReplay.performed += instance.OnDebugSaveReplay;
+                @DebugSaveReplay.canceled += instance.OnDebugSaveReplay;
             }
         }
     }
@@ -580,5 +619,6 @@ public class @GameInput : IInputActionCollection, IDisposable
         void OnTurnCamera(InputAction.CallbackContext context);
         void OnTurnCar(InputAction.CallbackContext context);
         void OnOpenPauseMenu(InputAction.CallbackContext context);
+        void OnDebugSaveReplay(InputAction.CallbackContext context);
     }
 }

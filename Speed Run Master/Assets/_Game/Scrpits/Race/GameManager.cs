@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static bool SpawnPlayer;
     private static HistoryData[] m_Replays;
-    private int m_FrameIndex;
+
+    [SerializeField] private bool m_IsDebug;
+    private float m_TimeElapsed;
     private HistoryData m_NewData;
     private GameInput m_Input;
     private float m_OldHorizontalInput;
     private float m_OldVerticalInput;
+    private int m_SceneIndex;
+    private bool m_IsGameStarted;
+    private Vector3 m_CurrentGrapplePoint;
 
 
     // Start is called before the first frame update
@@ -21,10 +27,13 @@ public class GameManager : MonoBehaviour
         m_Input.Enable();
         m_OldHorizontalInput = 0;
         m_OldVerticalInput = 0;
+        m_TimeElapsed = 0;
+        m_SceneIndex = SceneManager.GetActiveScene().buildIndex;
+        m_IsGameStarted = true;
 
         if (m_Replays == null)
         {
-            m_Replays = new HistoryData[4];
+            m_Replays = new HistoryData[3];
         }
 
         foreach (var history in m_Replays)
@@ -38,24 +47,30 @@ public class GameManager : MonoBehaviour
         //testing temporary
         SpawnPlayer = true;
 
-        m_FrameIndex = 0;
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (m_SceneIndex != 0)
         {
+            //Debug.Log("new history data");
             m_NewData = new HistoryData();
-            m_NewData.MapIndex = SceneManager.GetActiveScene().buildIndex;
+            m_NewData.MapIndex = m_SceneIndex;
         }
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-        foreach (var history in m_Replays)
-        {
-            if (history != null)
-            {
-                while (history.ApplyAction(m_FrameIndex) == true)
-                {
+        if (m_IsGameStarted == false) return;
 
+        m_TimeElapsed += Time.fixedDeltaTime;
+
+        if (m_Replays[m_SceneIndex - 1] != null)
+        {
+            int actionIndex = 0;
+            while (actionIndex >= 0)
+            {
+                actionIndex = m_Replays[m_SceneIndex - 1].ApplyAction(m_TimeElapsed);
+                if (actionIndex == 4 && m_Replays[m_SceneIndex - 1].IsGrapple == true)
+                {
+                    m_CurrentGrapplePoint = m_Replays[m_SceneIndex - 1].GetGrapplePoint();
                 }
             }
         }
@@ -83,43 +98,32 @@ public class GameManager : MonoBehaviour
 
         if (m_NewData != null)
         {
+            //Debug.Log(verticalInput);
             if (m_OldHorizontalInput != horizontalInput)
             {
-                m_NewData.LoadAction(0, m_FrameIndex, Mathf.RoundToInt(horizontalInput), Vector3.zero);
+                m_NewData.RegisterHorizontalAction(m_TimeElapsed, Mathf.RoundToInt(horizontalInput));
                 m_OldHorizontalInput = horizontalInput;
             }
 
             if (m_OldVerticalInput != verticalInput)
             {
-                m_NewData.LoadAction(1, m_FrameIndex, Mathf.RoundToInt(verticalInput), Vector3.zero);
+                m_NewData.RegisterVerticalAction(m_TimeElapsed, Mathf.RoundToInt(verticalInput));
                 m_OldVerticalInput = verticalInput;
             }
         }
-
-        m_FrameIndex++;
-
-        //testing
-        if (m_FrameIndex == 100)
-        {
-            AddNewDataToHistory();
-        }
     }
 
-    public bool CheckExistance(int carIndex)
+    public bool CheckExistance(bool player)
     {
         bool output = false;
 
-        if (carIndex == -1)
+        if (player == true)
         {
             output = SpawnPlayer;
         }
-        else if (carIndex >= 0 && carIndex < m_Replays.Length)
-        {
-            output = m_Replays[carIndex] != null && SceneManager.GetActiveScene().buildIndex == m_Replays[carIndex].MapIndex;
-        }
         else
         {
-            throw new System.Exception("Bad Car histtory index");
+            output = m_Replays[m_SceneIndex - 1] != null;
         }
 
         //Debug.Log(carIndex);
@@ -128,53 +132,94 @@ public class GameManager : MonoBehaviour
         return output;
     }
 
-    public bool IsSetCameraActive(int carIndex)
+    public bool IsSetCameraActive(bool player)
     {
         bool output = false;
 
-        if (carIndex == -1)
+        if (player == true)
         {
-            output = !SpawnPlayer;
-        }
-        else if (carIndex == 0 && SpawnPlayer == false)
-        {
-            output = false;
-        }
-        else if (carIndex >= 0 && carIndex < m_Replays.Length)
-        {
-            output = m_Replays[carIndex] != null && SceneManager.GetActiveScene().buildIndex == m_Replays[carIndex].MapIndex;
+            output = SpawnPlayer;
         }
         else
         {
-            throw new System.Exception("Bad Car histtory index");
+            output = !SpawnPlayer;
         }
 
         //Debug.Log(carIndex);
         //Debug.Log(output);
 
-        return !output;
+        return output;
     }
 
-    public float GetHorizontalInput(int carIndex)
+    public float GetHorizontalInput()
     {
-        return m_Replays[carIndex].HorizontalInput;
+        return m_Replays[m_SceneIndex - 1].HorizontalInput;
     }
 
-    public float GetVerticalInput(int carIndex)
+    public float GetVerticalInput()
     {
-        return m_Replays[carIndex].VerticalInput;
+        return m_Replays[m_SceneIndex - 1].VerticalInput;
     }
 
-    public bool GetBraking(int carIndex)
+    public bool GetBrakingInput()
     {
-        return m_Replays[carIndex].IsBraking;
+        return m_Replays[m_SceneIndex - 1].IsBraking;
     }
 
-    private void AddNewDataToHistory()
+    public bool GetJumpInput()
     {
-        m_Replays[3] = m_Replays[2];
-        m_Replays[2] = m_Replays[1];
-        m_Replays[1] = m_Replays[0];
-        m_Replays[0] = m_NewData;
+        return m_Replays[m_SceneIndex - 1].IsJump;
+    }
+
+    public bool GetJGrappleInput()
+    {
+        return m_Replays[m_SceneIndex - 1].IsGrapple;
+    }
+
+    public Vector3 GetJGrapplePoint()
+    {
+        return m_CurrentGrapplePoint;
+    }
+
+    private void RaceComplete()
+    {
+        m_NewData.RaceTime = m_TimeElapsed;
+        if (m_Replays[m_SceneIndex - 1] != null)
+        {
+            if (m_TimeElapsed < m_Replays[m_SceneIndex - 1].RaceTime)
+            {
+                m_Replays[m_SceneIndex - 1] = m_NewData;
+            }
+        }
+        else
+        {
+            m_Replays[m_SceneIndex - 1] = m_NewData;
+        }
+    }
+
+    public void RegisterBreaking(bool start)
+    {
+        m_NewData.RegisterBrakeAction(m_TimeElapsed, start);
+    }
+
+    public void RegisterJumping(bool start)
+    {
+        m_NewData.RegisterJumpAction(m_TimeElapsed, start);
+    }
+
+    public void RegisterGrappling(bool start, Vector3 point)
+    {
+        m_NewData.ResgterGrappleAction(m_TimeElapsed, start, point);
+    }
+
+    public void DebugSaveReplay(InputAction.CallbackContext context)
+    {
+        if (m_IsDebug)
+        {
+            if (context.phase == InputActionPhase.Started)
+            {
+                m_Replays[m_SceneIndex - 1] = m_NewData;
+            }
+        }
     }
 }

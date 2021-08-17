@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pickup_Jump : Pickup
 {
+    [SerializeField] private GameManager m_Manager;
     [SerializeField] private float m_JumpPower;
 
     public override void ActivatePickup()
@@ -12,10 +13,12 @@ public class Pickup_Jump : Pickup
         Vector3 up = transform.parent.parent.up;
         Rigidbody rb = transform.parent.parent.GetComponent<Rigidbody>();
         rb.AddForce(m_JumpPower * up, ForceMode.Impulse);
+        m_Manager.RegisterJumping(true);
     }
 
     public override void DeactivatePickup()
     {
+        m_Manager.RegisterJumping(false);
         
     }
 
@@ -27,5 +30,12 @@ public class Pickup_Jump : Pickup
     public override void SelectPickup()
     {
         
+    }
+
+    public void ManualJump()
+    {
+        Vector3 up = transform.parent.parent.up;
+        Rigidbody rb = transform.parent.parent.GetComponent<Rigidbody>();
+        rb.AddForce(m_JumpPower * up, ForceMode.Impulse);
     }
 }

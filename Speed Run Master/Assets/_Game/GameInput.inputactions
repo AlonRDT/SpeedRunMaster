@@ -76,6 +76,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "DebugSaveReplay",
+                    "type": "Button",
+                    "id": "3e9e1eb5-7bfe-481b-8e82-b8adb11f65e8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -397,6 +405,28 @@
                     "action": "TurnCar",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "6df2a14b-a198-4394-9e67-a2df48d5ff3b",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugSaveReplay",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a45ed7e8-f16d-4106-92ed-81e43072e83f",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugSaveReplay",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
