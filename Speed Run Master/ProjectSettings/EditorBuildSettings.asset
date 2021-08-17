@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/_Scenes/TrackDesert.unity
-    guid: 65a4fbc55dd68154c8a99b20f3193ec0
+    guid: a21a596a833210648b9e7ade571a26cd
   - enabled: 1
     path: Assets/_Scenes/TrackMoon.unity
     guid: b203cbe8b73db8948ac12292aace3263
