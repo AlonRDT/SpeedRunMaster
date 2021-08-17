@@ -279,13 +279,13 @@ public class GameManager : MonoBehaviour
         switch (m_SceneIndex)
         {
             case 1:
-                PlayerPrefs.SetString("BestCanyonTime", finalValue.ToString());
+                PlayerPrefs.SetString("BestCanyonTime", finalValue.ToString("0.00"));
                 break;
             case 2:
-                PlayerPrefs.SetString("BestMoonTime", finalValue.ToString());
+                PlayerPrefs.SetString("BestMoonTime", finalValue.ToString("0.00"));
                 break;
             case 3:
-                PlayerPrefs.SetString("BestLabTime", finalValue.ToString());
+                PlayerPrefs.SetString("BestLabTime", finalValue.ToString("0.00"));
                 break;
             default:
                 break;
