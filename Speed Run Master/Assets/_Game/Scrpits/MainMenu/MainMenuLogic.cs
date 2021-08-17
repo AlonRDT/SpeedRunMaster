@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
@@ -16,12 +17,21 @@ public class MainMenuLogic : MonoBehaviour
     [SerializeField] GameObject m_ChooseLevelCloseButton;
     [SerializeField] GameObject m_HighscoreCloseButton;
     [SerializeField] GameObject m_RewatchCloseButton;
+    [SerializeField] Text m_BestCanyonTimeText;
+    [SerializeField] Text m_BestMoonTimeText;
+    [SerializeField] Text m_BestLabTimeText;
+    [SerializeField] List<Button> m_ReplayButtons;
 
     private void Start()
     {
         m_PanelChooseLevel.SetActive(false);
         m_PanelHighScores.SetActive(false);
         m_PanelRewatch.SetActive(false);
+
+        m_BestCanyonTimeText.text = PlayerPrefs.GetString("BestCanyonTime", "None");
+        m_BestMoonTimeText.text = PlayerPrefs.GetString("BestMoonTime", "None");
+        m_BestLabTimeText.text = PlayerPrefs.GetString("BestLabTime", "None");
+
 
         Time.timeScale = 1;
 
@@ -30,6 +40,14 @@ public class MainMenuLogic : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(m_MainMenuFirstButton);
+
+        for (int i = 0; i < m_ReplayButtons.Count; i++)
+        {
+            if(GameManager.DoesMapHaveHistory(i + 1) == false)
+            {
+                m_ReplayButtons[i].interactable = false;
+            }
+        }
     }
 
     public void MenuBack()
@@ -96,18 +114,21 @@ public class MainMenuLogic : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(m_RewatchCloseButton);
     }
 
-    public void LoadDesertLevel()
+    public void LoadDesertLevel(bool spawnPlayer)
     {
+        GameManager.SpawnPlayer = spawnPlayer;
         SceneManager.LoadScene(1);
     }
 
-    public void LoadMoonLevel()
+    public void LoadMoonLevel(bool spawnPlayer)
     {
+        GameManager.SpawnPlayer = spawnPlayer;
         SceneManager.LoadScene(2);
     }
 
-    public void LoadLabLevel()
+    public void LoadLabLevel(bool spawnPlayer)
     {
+        GameManager.SpawnPlayer = spawnPlayer;
         SceneManager.LoadScene(3);
     }
 

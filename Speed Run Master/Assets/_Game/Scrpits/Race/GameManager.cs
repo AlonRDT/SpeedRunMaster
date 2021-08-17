@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     private static HistoryData[] m_Replays;
 
     [SerializeField] private bool m_IsDebug;
+    [SerializeField] private Text m_TimeText;
+    [SerializeField] private Text m_MainText;
     private float m_TimeElapsed;
     private HistoryData m_NewData;
     private GameInput m_Input;
@@ -29,7 +32,7 @@ public class GameManager : MonoBehaviour
         m_OldVerticalInput = 0;
         m_TimeElapsed = 0;
         m_SceneIndex = SceneManager.GetActiveScene().buildIndex;
-        m_IsGameStarted = true;
+        m_IsGameStarted = false;
 
         if (m_Replays == null)
         {
@@ -44,20 +47,54 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //testing temporary
-        SpawnPlayer = true;
+        if(m_IsDebug == true)
+        {
+            SpawnPlayer = true;
+        }
 
         if (m_SceneIndex != 0)
         {
             //Debug.Log("new history data");
             m_NewData = new HistoryData();
             m_NewData.MapIndex = m_SceneIndex;
+            StartCoroutine(StartGame());
         }
+        else
+        {
+            m_MainText.gameObject.SetActive(false);
+            m_TimeText.gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator StartGame()
+    {
+        Animator anim = m_MainText.GetComponent<Animator>();
+        m_MainText.text = "Ready";
+        anim.SetTrigger("Enlarge");
+        yield return new WaitForSeconds(2);
+        m_MainText.text = "Set";
+        anim.SetTrigger("Enlarge");
+        yield return new WaitForSeconds(2);
+        m_MainText.text = "Go";
+        anim.SetTrigger("Enlarge");
+        yield return new WaitForSeconds(1);
+        m_IsGameStarted = true;
+        yield return new WaitForSeconds(1);
+        m_MainText.gameObject.SetActive(false);
+    }
+
+    public bool CanCarMove()
+    {
+        return m_IsGameStarted;
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
+        if (m_SceneIndex == 0) return;
+
+        m_TimeText.text = m_TimeElapsed.ToString("0.00");
+
         if (m_IsGameStarted == false) return;
 
         m_TimeElapsed += Time.fixedDeltaTime;
@@ -183,6 +220,12 @@ public class GameManager : MonoBehaviour
 
     private void RaceComplete()
     {
+        m_TimeText.gameObject.SetActive(false);
+        m_MainText.gameObject.SetActive(true);
+        m_MainText.text = m_TimeElapsed.ToString();
+        m_MainText.color = Color.yellow;
+
+
         m_NewData.RaceTime = m_TimeElapsed;
         if (m_Replays[m_SceneIndex - 1] != null)
         {
@@ -195,6 +238,68 @@ public class GameManager : MonoBehaviour
         {
             m_Replays[m_SceneIndex - 1] = m_NewData;
         }
+
+        string currentValue = "None";
+        float finalValue;
+        switch (m_SceneIndex)
+        {
+            case 1:
+                currentValue = PlayerPrefs.GetString("BestCanyonTime", "None");
+                break;
+            case 2:
+                currentValue = PlayerPrefs.GetString("BestMoonTime", "None");
+                break;
+            case 3:
+                currentValue = PlayerPrefs.GetString("BestLabTime", "None");
+                break;
+            default:
+                break;
+        }
+
+        if (currentValue != "None")
+        {
+            //if parse is valid than final value will be initialized with parse value
+            if (float.TryParse(currentValue, out finalValue))
+            {
+                if (finalValue > m_TimeElapsed)
+                {
+                    finalValue = m_TimeElapsed;
+                }
+            }
+            else
+            {
+                finalValue = m_TimeElapsed;
+            }
+        }
+        else
+        {
+            finalValue = m_TimeElapsed;
+        }
+
+        switch (m_SceneIndex)
+        {
+            case 1:
+                PlayerPrefs.SetString("BestCanyonTime", finalValue.ToString());
+                break;
+            case 2:
+                PlayerPrefs.SetString("BestMoonTime", finalValue.ToString());
+                break;
+            case 3:
+                PlayerPrefs.SetString("BestLabTime", finalValue.ToString());
+                break;
+            default:
+                break;
+        }
+
+
+        //stop fixed update
+        m_SceneIndex = 0;
+        Invoke("loadMainMenu", 4);
+    }
+
+    private void loadMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void RegisterBreaking(bool start)
@@ -221,5 +326,14 @@ public class GameManager : MonoBehaviour
                 m_Replays[m_SceneIndex - 1] = m_NewData;
             }
         }
+    }
+
+    public static bool DoesMapHaveHistory(int mapIndex)
+    {
+        if (m_Replays == null)
+        {
+            m_Replays = new HistoryData[3];
+        }
+        return m_Replays[mapIndex - 1] != null;
     }
 }

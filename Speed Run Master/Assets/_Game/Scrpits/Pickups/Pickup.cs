@@ -8,7 +8,7 @@ public abstract class Pickup : MonoBehaviour
 
     protected void Start()
     {
-        m_Ammo = 10;
+        m_Ammo = 0;
     }
 
     public void IncreaseAmmo()

@@ -66,12 +66,11 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (m_Manager.CanCarMove() == false) return;
         GetInput();
         HandleMotor();
         HandleSteering();
         UpdateWheels();
-
-
     }
     //gets the input of the keyboard/keypad
     private void GetInput()
