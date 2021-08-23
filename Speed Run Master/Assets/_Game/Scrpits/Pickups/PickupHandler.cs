@@ -11,7 +11,7 @@ public class PickupHandler : MonoBehaviour
     [SerializeField] private List<Sprite> m_PickupSprites;
     [SerializeField] private Image m_PickupImage;
     private int m_CurrentPickupIndex;
-    private bool m_ActionInProgress;
+    private bool m_ActionInProgress;//if changes weapon during us of weapon it stops the weapon thats being used 
     private AudioSource m_NoPickupAudio;
 
     // Start is called before the first frame update
@@ -69,6 +69,7 @@ public class PickupHandler : MonoBehaviour
                     newIndex = i;
                 }
 
+                //if the current pickup is the last i have stay on the pickup im currently on
                 if (m_CurrentPickupIndex == m_Weapons.Count - 1)
                 {
                     break;
@@ -87,6 +88,7 @@ public class PickupHandler : MonoBehaviour
 
     private void loadWeapon(int newIndex)
     {
+        //when you change pickup it stops all the last [ickup attributs
         if (m_CurrentPickupIndex != -1)
         {
             m_Weapons[m_CurrentPickupIndex].DeselectPickup();
@@ -105,6 +107,9 @@ public class PickupHandler : MonoBehaviour
         m_CurrentPickupIndex = newIndex;
     }
 
+
+    //callbackcontext + context - are used to be able to play with the gamepad
+    //we only use it for the up and down click
     public void Fire(InputAction.CallbackContext context)
     {
         if (m_CurrentPickupIndex != -1 && context.phase == InputActionPhase.Started)

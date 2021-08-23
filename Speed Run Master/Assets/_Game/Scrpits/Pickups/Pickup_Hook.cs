@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pickup_Hook : Pickup
 {
+    //SerializeField = like public but doesnt allow edit from out of the editor
     [SerializeField] private GameManager m_Manager;
     [SerializeField] private GameObject m_Crosshair;
     [SerializeField] private GameObject m_GrappleStart;
@@ -20,8 +21,10 @@ public class Pickup_Hook : Pickup
     private GameObject m_Base;
     private Vector3 m_GrapplePoint;
 
+    //new  = replaced start method in parent
     protected new void Start()
     {
+        //start calls start in parent to set amount of ammo
         base.Start();
         m_Crosshair.SetActive(false);
         m_LineRenderer = GetComponent<LineRenderer>();
@@ -30,17 +33,19 @@ public class Pickup_Hook : Pickup
 
     public override void ActivatePickup()
     {
+        //base = activates pickup in parent and than the fuction here.
         base.ActivatePickup();
         m_Spring = m_Base.AddComponent<SpringJoint>();
-        //dont calculate automatically the anchor
+        //dosnt attach the anchor automatically to the car
         m_Spring.autoConfigureConnectedAnchor = false;
         //get a point in front of camera at desired distance
+        //makes the scope appear at the middle of the sceen and not the middle of the UI
         m_GrapplePoint = Camera.main.ViewportToWorldPoint(new Vector3(0.5F, 0.5F, 0)) + Camera.main.transform.forward * m_LineLength;
-        m_Spring.connectedAnchor = m_GrapplePoint;
-        m_Spring.anchor = m_JointAnchorLocation;
+        m_Spring.connectedAnchor = m_GrapplePoint;//anchor point on the map
+        m_Spring.anchor = m_JointAnchorLocation;//anchor point on the car
 
         //the distance grapple will try to keep from grapple point
-        m_Spring.maxDistance = m_LineLength * (1 - m_JointDeltaMaxDistancePredentage);
+        m_Spring.maxDistance = m_LineLength * (1 - m_JointDeltaMaxDistancePredentage);//reduces springs tension gradually
 
 
         //pull push power
@@ -49,10 +54,11 @@ public class Pickup_Hook : Pickup
         m_Spring.massScale = m_JointMassScale;
 
         m_LineRenderer.positionCount = 2;
-
+        //registers the spring in the history data
         m_Manager.RegisterGrappling(true, m_GrapplePoint);
     }
 
+    //lateupdate - updates after the regular update. makes the line render in the correct position
     private void LateUpdate()
     {
         if (m_Spring != null)
@@ -80,6 +86,7 @@ public class Pickup_Hook : Pickup
         m_Crosshair.SetActive(true);
     }
 
+    //delets spring when player lets the bottun go
     public override void DeactivatePickup()
     {
         m_LineRenderer.positionCount = 0;
@@ -87,6 +94,7 @@ public class Pickup_Hook : Pickup
         m_Manager.RegisterGrappling(false, Vector3.zero);
     }
 
+    //makes the ghost activate his spring
     public void ManualStartGrapple(Vector3 point)
     {
         m_Spring = m_Base.AddComponent<SpringJoint>();

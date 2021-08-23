@@ -114,6 +114,7 @@ public class MainMenuLogic : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(m_RewatchCloseButton);
     }
 
+    //if spawnplayer isnt checked in the ui button the game knows thzt its only a repaly
     public void LoadDesertLevel(bool spawnPlayer)
     {
         GameManager.SpawnPlayer = spawnPlayer;

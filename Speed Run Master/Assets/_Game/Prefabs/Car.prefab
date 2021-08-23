@@ -408,6 +408,8 @@ MonoBehaviour:
   m_PickupHandler: {fileID: 3552996515020136107}
   m_GrapplingHookPickup: {fileID: 3552996514829634970}
   m_JumpPickup: {fileID: 3552996513682008135}
+  audioSource: {fileID: 0}
+  drive: {fileID: 8300000, guid: a59b7d1b0aa9189439ae0561b9c2a2ab, type: 3}
 --- !u!114 &4238645626773296133
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,14 +25,14 @@ public class HistoryData
         m_CurrentArrayIndex = 0;
         m_CurrentGrappleIndex = 0;
     }
-
+    //gets the command from the gamemanger
     public void RegisterHorizontalAction(float actionTime, int actionValue)
     {
         m_ActionIndex.Add(0);
         m_ActionTime.Add(actionTime);
         m_ActionValue.Add(actionValue);
     }
-
+    //gets the command from the gamemanger
     public void RegisterVerticalAction(float actionTime, int actionValue)
     {
         //Debug.Log(actionTime);
@@ -40,7 +40,7 @@ public class HistoryData
         m_ActionTime.Add(actionTime);
         m_ActionValue.Add(actionValue);
     }
-
+    //gets the command from the gamemanger that gets it from carcontroller
     public void RegisterBrakeAction(float ActionTime, bool start)
     {
         //Debug.Log("break " + start);
@@ -55,7 +55,7 @@ public class HistoryData
             m_ActionValue.Add(0);
         }
     }
-
+    //gets the command from the gamemanger that gets it from jumppickup
     public void RegisterJumpAction(float ActionTime, bool start)
     {
         //Debug.Log("jump " + start);
@@ -70,7 +70,7 @@ public class HistoryData
             m_ActionValue.Add(0);
         }
     }
-
+    //gets the command from the gamemanger that gets it from grapllerpickup
     public void ResgterGrappleAction(float ActionTime, bool start, Vector3 grapplePoint)
     {
         //Debug.Log("grapple " + start);
@@ -95,8 +95,8 @@ public class HistoryData
         {
             if (timeElapsesd >= m_ActionTime[m_CurrentArrayIndex])
             {
-                //Debug.Log(m_ActionTime[m_CurrentArrayIndex] + " > " + timeElapsesd);
-
+                //updates the input for the ghost to ask for the correct input for the time frame(currentarrayindex)
+                //like elseif
                 switch (m_ActionIndex[m_CurrentArrayIndex])
                 {
                     case 0:
@@ -133,7 +133,7 @@ public class HistoryData
 
         return output;
     }
-
+    //get the grappling input for the ghost
     public Vector3 GetGrapplePoint()
     {
         m_CurrentGrappleIndex++;

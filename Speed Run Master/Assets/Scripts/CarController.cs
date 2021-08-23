@@ -44,10 +44,12 @@ public class CarController : MonoBehaviour
     {
         isJumping = false;
         isGrappling = false;
+        //CheckExistance is to check if theres a player and/or ghost in the game
         if (m_Manager.CheckExistance(m_IsPlayer) == false)
         {
             Destroy(gameObject);
         }
+        //checks if the camera is on the ghost or the player
         else if (m_Manager.IsSetCameraActive(m_IsPlayer) == true)
         {
             m_Camera.SetActive(true);
@@ -59,13 +61,18 @@ public class CarController : MonoBehaviour
             Destroy(m_PickupHandler.GetComponent<PlayerInput>());
         }
 
+        //make the center of mass be lower in the car so the car wont flip easily
         Rb.centerOfMass = new Vector3(0, centerOfMass, 0);
+
+
         m_Input = new GameInput();
         m_Input.Enable();
+
     }
 
     private void FixedUpdate()
     {
+        //cancarmove - lets the car move only when GO appears
         if (m_Manager.CanCarMove() == false) return;
         GetInput();
         HandleMotor();
@@ -77,6 +84,7 @@ public class CarController : MonoBehaviour
     {
         if (m_IsPlayer == true)
         {
+            //that's how you write the code for the gamepad. started is when click - canceled is when you let go
             horizontalInput = m_Input.Gameplay.TurnCar.ReadValue<float>();
             if (horizontalInput > 0)
             {
@@ -86,6 +94,7 @@ public class CarController : MonoBehaviour
             {
                 horizontalInput = -1;
             }
+            //readvalue = getaxis for gamepad controll
             verticalInput = m_Input.Gameplay.MoveCar.ReadValue<float>();
             if (verticalInput > 0)
             {
@@ -98,6 +107,7 @@ public class CarController : MonoBehaviour
         }
         else
         {
+            //gets the history input for the ghost
             horizontalInput = m_Manager.GetHorizontalInput();
             verticalInput = m_Manager.GetVerticalInput();
             //Debug.Log(verticalInput);
@@ -108,6 +118,7 @@ public class CarController : MonoBehaviour
                 m_JumpPickup.ManualJump();
             }
             isJumping = jump;
+            //follows the changes in the button activation click the player did
             bool grapple = m_Manager.GetJGrappleInput();
             if(grapple != isGrappling)
             {
@@ -128,6 +139,7 @@ public class CarController : MonoBehaviour
     {
         if (m_IsPlayer == true)
         {
+            //that's how you write the code for the gamepad. started is when click - canceled is when you let go
             if (context.phase == InputActionPhase.Started)
             {
                 isBreaking = true;
@@ -143,7 +155,7 @@ public class CarController : MonoBehaviour
 
     private void HandleMotor()
     {
-        //Torque is the result of applying a force at a lever/distance. similar to velocity
+        //Torque is the result of applying a force rotation. similar to velocity
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
         currentbreakForce = isBreaking ? breakForce : 0f;
@@ -160,6 +172,8 @@ public class CarController : MonoBehaviour
 
     private void HandleSteering()
     {
+        //steerAngle = Steering angle in degrees, always around the local y-axis.
+
         currentSteerAngle = maxSteerAngle * horizontalInput;
         frontLeftWheelCollider.steerAngle = currentSteerAngle;
         frontRightWheelCollider.steerAngle = currentSteerAngle;
@@ -167,6 +181,7 @@ public class CarController : MonoBehaviour
 
     private void UpdateWheels()
     {
+        //sends UpdateSingleWheel the position of each wheel 
         UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
         UpdateSingleWheel(frontRightWheelCollider, frontRightWheeTransform);
         UpdateSingleWheel(rearRightWheelCollider, rearRightWheelTransform);
@@ -175,8 +190,10 @@ public class CarController : MonoBehaviour
 
     private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
+        //reset the position of the wheels
         Vector3 pos;
         Quaternion rot;
+        //GetWorldPose - Gets the world space pose of the wheel accounting for ground contact, suspension limits, steer angle, and rotation angle (angles in degrees)
         wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;

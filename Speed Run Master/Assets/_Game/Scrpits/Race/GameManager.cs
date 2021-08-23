@@ -7,13 +7,18 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //static = the data isnt deleted when scenes are changed. and doesnt require to define object to use in other scripts(public)
     public static bool SpawnPlayer;
     private static HistoryData[] m_Replays;
-
+    //isdebug = allows to save replay by pressing a button
     [SerializeField] private bool m_IsDebug;
     [SerializeField] private Text m_TimeText;
+    //ready set go + end time
     [SerializeField] private Text m_MainText;
+
+    //saves the clicks time for the ghost to use
     private float m_TimeElapsed;
+    //historydata - saves the players input during the game
     private HistoryData m_NewData;
     private GameInput m_Input;
     private float m_OldHorizontalInput;
@@ -88,7 +93,7 @@ public class GameManager : MonoBehaviour
         return m_IsGameStarted;
     }
 
-    // Update is called once per frame
+    // fixedUpdate is called once per frame over the exsact same time
     private void FixedUpdate()
     {
         if (m_SceneIndex == 0) return;
@@ -99,6 +104,7 @@ public class GameManager : MonoBehaviour
 
         m_TimeElapsed += Time.fixedDeltaTime;
 
+        //checks what map were on to check if the replay for this map exists 
         if (m_Replays[m_SceneIndex - 1] != null)
         {
             int actionIndex = 0;
@@ -112,8 +118,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //Debug.Log(m_Replays.)
-
+        //gets the gamepad input and registes it to the history
         float horizontalInput = m_Input.Gameplay.TurnCar.ReadValue<float>();
         if (horizontalInput > 0)
         {
@@ -133,6 +138,7 @@ public class GameManager : MonoBehaviour
             verticalInput = -1;
         }
 
+        //adds the game data for th ghost to newdata. (in future if drive is shorter it will make it the new ghost)
         if (m_NewData != null)
         {
             //Debug.Log(verticalInput);
@@ -188,6 +194,7 @@ public class GameManager : MonoBehaviour
         return output;
     }
 
+    //replays = gets the input for that time from history for ghost. sceneindex = shows the index for the current map(-1 because the first map is the main menu
     public float GetHorizontalInput()
     {
         return m_Replays[m_SceneIndex - 1].HorizontalInput;
@@ -218,14 +225,13 @@ public class GameManager : MonoBehaviour
         return m_CurrentGrapplePoint;
     }
 
-    private void RaceComplete()
+    public void RaceComplete()
     {
         m_TimeText.gameObject.SetActive(false);
         m_MainText.gameObject.SetActive(true);
         m_MainText.text = m_TimeElapsed.ToString();
-        m_MainText.color = Color.yellow;
 
-
+        //checks if the newdata time is shorter and saves it as the replay if its shorter
         m_NewData.RaceTime = m_TimeElapsed;
         if (m_Replays[m_SceneIndex - 1] != null)
         {
@@ -243,6 +249,7 @@ public class GameManager : MonoBehaviour
         float finalValue;
         switch (m_SceneIndex)
         {
+            //playerprefs saves the best time on that map even when you exit the game. checks the memory slot for whats there
             case 1:
                 currentValue = PlayerPrefs.GetString("BestCanyonTime", "None");
                 break;
@@ -258,9 +265,10 @@ public class GameManager : MonoBehaviour
 
         if (currentValue != "None")
         {
-            //if parse is valid than final value will be initialized with parse value
+            //if parse is valid than final value will be initialized with parse value(float)
             if (float.TryParse(currentValue, out finalValue))
             {
+                //changes the time it took to finish the replay to the time it took to finish the race(only if race time was lower)
                 if (finalValue > m_TimeElapsed)
                 {
                     finalValue = m_TimeElapsed;
@@ -278,6 +286,7 @@ public class GameManager : MonoBehaviour
 
         switch (m_SceneIndex)
         {
+            //playerprefs saves the best time on that map even when you exit the game. saves the memory slot for whats there
             case 1:
                 PlayerPrefs.SetString("BestCanyonTime", finalValue.ToString("0.00"));
                 break;
@@ -292,7 +301,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        //stop fixed update
+        //stop fixed update. stops saving the ghost data
         m_SceneIndex = 0;
         Invoke("loadMainMenu", 4);
     }
@@ -328,6 +337,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //cant click replay button if there is no replay
     public static bool DoesMapHaveHistory(int mapIndex)
     {
         if (m_Replays == null)

@@ -23,9 +23,15 @@ public abstract class Pickup : MonoBehaviour
         return m_Ammo == 0;
     }
 
+
+    //abstract = child class has to use this method 
     public abstract void SelectPickup();
     public abstract void DeselectPickup();
+
+    //used for when the pickup has finished is use
     public abstract void DeactivatePickup();
+
+    //virtual = child doesnt have to use this method
     public virtual void ActivatePickup()
     {
         m_Ammo--;

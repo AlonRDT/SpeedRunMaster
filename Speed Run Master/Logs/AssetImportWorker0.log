@@ -1,0 +1,273 @@
+Using pre-set license
+Built from '2020.3/release' branch; Version is '2020.3.15f2 (6cf78cb77498) revision 7141260'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19042.1165; Version 2009; 64bit' Language: 'en' Physical Memory: 16106 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.15f2\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/Mr. Nice Comp/Documents/SpeedRunMaster/SpeedRunMaster/Speed Run Master
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+54054
+Successfully changed project path to: C:/Users/Mr. Nice Comp/Documents/SpeedRunMaster/SpeedRunMaster/Speed Run Master
+C:/Users/Mr. Nice Comp/Documents/SpeedRunMaster/SpeedRunMaster/Speed Run Master
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 53.34 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.15f2 (6cf78cb77498)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Mr. Nice Comp/Documents/SpeedRunMaster/SpeedRunMaster/Speed Run Master/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Intel(R) Iris(R) Xe Graphics (ID=0x9a49)
+    Vendor:   
+    VRAM:     8053 MB
+    Driver:   27.20.100.9365
+Shader 'Custom/RainShader': fallback shader 'Particles/Alpha Blended' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56672
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002098 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 48.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.321 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1321ms)
+		BeginReloadAssembly (100ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (407ms)
+			LoadAssemblies (97ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (140ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (34ms)
+			SetupLoadedEditorAssemblies (157ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (48ms)
+				BeforeProcessingInitializeOnLoad (12ms)
+				ProcessInitializeOnLoadAttributes (70ms)
+				ProcessInitializeOnLoadMethodAttributes (22ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.003674 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-0000021E2B749020 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000021E2B299040 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000021E2B8CBC20 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000021E2A03B020 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000021E24C95820 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000021E2A03B020 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\RoadArchitect.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000021E2A5F6E30 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000021E24C95820 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000021E2B3AFDF0 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000021E2B41C010 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\Unity.InputSystem.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000021E2AEFC640 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000021E2A370010 doesn't match image C:\Users\Mr. Nice Comp\Documents\SpeedRunMaster\SpeedRunMaster\Speed Run Master\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 48.21 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.057 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1058ms)
+		BeginReloadAssembly (132ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (18ms)
+		EndReloadAssembly (868ms)
+			LoadAssemblies (87ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (245ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (399ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (48ms)
+				BeforeProcessingInitializeOnLoad (57ms)
+				ProcessInitializeOnLoadAttributes (281ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Custom/RainShader': fallback shader 'Particles/Alpha Blended' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.93 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1791 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 101.2 MB.
+System memory in use after: 101.1 MB.
+
+Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 2250.
+Total: 2.487500 ms (FindLiveObjects: 0.162100 ms CreateObjectMapping: 0.043400 ms MarkObjects: 1.992500 ms  DeleteObjects: 0.288100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/_Game/Scrpits/MainMenu/MainMenuLogic.cs
+  artifactKey: Guid(a62339b30b2d34d4f8a5d01e66515ae2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Game/Scrpits/MainMenu/MainMenuLogic.cs using Guid(a62339b30b2d34d4f8a5d01e66515ae2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ba1d3d6a324faf5caef537e4d4eeced') in 0.023291 seconds 
+  Import took 0.026276 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.400415 seconds.
+  path: Assets/RainMaker/Demo/DemoScript2D.cs
+  artifactKey: Guid(07098deef08d9114d86d991233aca5db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RainMaker/Demo/DemoScript2D.cs using Guid(07098deef08d9114d86d991233aca5db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f9b2a9026f49591f3a2344503398fcd') in 0.005544 seconds 
+  Import took 0.008978 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.067404 seconds.
+  path: Assets/RainMaker/Prefab/BaseRainScript.cs
+  artifactKey: Guid(5fadb2792073be54387ad764e856d440) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RainMaker/Prefab/BaseRainScript.cs using Guid(5fadb2792073be54387ad764e856d440) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '700fe8aebaf7640596971a17a4b83b0a') in 0.005822 seconds 
+  Import took 0.008695 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036985 seconds.
+  path: Assets/_Game/Scrpits/Pickups/Pickup_Hook.cs
+  artifactKey: Guid(f3a863c4c08f97d48adca2e9d6193642) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Game/Scrpits/Pickups/Pickup_Hook.cs using Guid(f3a863c4c08f97d48adca2e9d6193642) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32a1ee5ad79d772cc6638ef62862179a') in 0.007037 seconds 
+  Import took 0.010494 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.019523 seconds.
+  path: Assets/_Game/Scrpits/Pickups/Pickup.cs
+  artifactKey: Guid(1ef98fa47ab85b84cb6de778a5d6a3c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Game/Scrpits/Pickups/Pickup.cs using Guid(1ef98fa47ab85b84cb6de778a5d6a3c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '341ed40cf1c7c73fc93fc923c93132a3') in 0.007633 seconds 
+  Import took 0.010750 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.028441 seconds.
+  path: Assets/_Game/Scrpits/Race/EndLevel.cs
+  artifactKey: Guid(2e625bce6ec5d984db7c5e95d0e5ec88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Game/Scrpits/Race/EndLevel.cs using Guid(2e625bce6ec5d984db7c5e95d0e5ec88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4797394a2065b783dd5ec6fc3787dd7') in 0.006532 seconds 
+  Import took 0.009976 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.070406 seconds.
+  path: Assets/RainMaker/Demo/DemoScriptStartRainOnSpaceBar.cs
+  artifactKey: Guid(0ec1ec4eb1481524d8ee3b3a4d43da96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RainMaker/Demo/DemoScriptStartRainOnSpaceBar.cs using Guid(0ec1ec4eb1481524d8ee3b3a4d43da96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1db9b0c73016552702cf888d6f0d54c0') in 0.007541 seconds 
+  Import took 0.010440 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008754 seconds.
+  path: Assets/RainMaker/Demo/DemoScript.cs
+  artifactKey: Guid(48b592a089d06c44b8340d68e40c31d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RainMaker/Demo/DemoScript.cs using Guid(48b592a089d06c44b8340d68e40c31d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68125ee0c45205452da6e697041e9950') in 0.005882 seconds 
+  Import took 0.009208 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.130711 seconds.
+  path: Assets/_Game/Scrpits/Race/GameManager.cs
+  artifactKey: Guid(7a2034f69b627354ea8e6cff806af610) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Game/Scrpits/Race/GameManager.cs using Guid(7a2034f69b627354ea8e6cff806af610) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ddebc5d7c410eb253aa6402e9d68ff7') in 0.002447 seconds 
+  Import took 0.005828 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.098846 seconds.
+  path: Assets/RainMaker/Prefab/RainScript.cs
+  artifactKey: Guid(6ff5b1f04dece7440b6f0886ee13f147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RainMaker/Prefab/RainScript.cs using Guid(6ff5b1f04dece7440b6f0886ee13f147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46be70b3480b1e16b88ee165c7abb115') in 0.006058 seconds 
+  Import took 0.009390 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.366847 seconds.
+  path: Assets/Scripts/CarController.cs
+  artifactKey: Guid(8d99c90a7110211448971f8f44e0d44c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/CarController.cs using Guid(8d99c90a7110211448971f8f44e0d44c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8e3b111f85c67db956cabbdb6f9a18f') in 0.007281 seconds 
+  Import took 0.010840 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.010283 seconds.
+  path: Assets/RainMaker/Prefab/RainCollision.cs
+  artifactKey: Guid(30b85ae89f8f0994a85aa62bf5a0e160) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RainMaker/Prefab/RainCollision.cs using Guid(30b85ae89f8f0994a85aa62bf5a0e160) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'edab371ac4511126abcc9955efe3ede8') in 0.005920 seconds 
+  Import took 0.009378 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.077486 seconds.
+  path: Assets/RainMaker/Prefab/RainScript2D.cs
+  artifactKey: Guid(340901a9d8d97bd43abdfe247e210193) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RainMaker/Prefab/RainScript2D.cs using Guid(340901a9d8d97bd43abdfe247e210193) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e0afdf8f1ed044e3803c9932cbeb9db') in 0.005730 seconds 
+  Import took 0.008617 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.056101 seconds.
+  path: Assets/_Game/Scrpits/Race/HistoryData.cs
+  artifactKey: Guid(f7a7b78709080f94badd98083b078d13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Game/Scrpits/Race/HistoryData.cs using Guid(f7a7b78709080f94badd98083b078d13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00828a98aadfd2eff3063b6b9cd43b76') in 0.006232 seconds 
+  Import took 0.010068 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

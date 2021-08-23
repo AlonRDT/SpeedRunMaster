@@ -26,6 +26,7 @@ public class MissileLogic : MonoBehaviour
     {
         if(m_IsInitialized)
         {
+            //explodes the missile is has no target while fired
             if(m_TargetTransform == null)
             {
                 explode();
@@ -33,7 +34,7 @@ public class MissileLogic : MonoBehaviour
             else
             {
                 m_RigidBody.velocity = transform.forward * m_FlySpeed;
-
+                //sets the roation of the missile to the target
                 Quaternion rocketTargetRot = Quaternion.LookRotation(m_TargetTransform.position - transform.position);
                 m_RigidBody.MoveRotation(Quaternion.RotateTowards(transform.rotation, rocketTargetRot, m_TurnSpeed));
             }
@@ -47,6 +48,7 @@ public class MissileLogic : MonoBehaviour
         Destroy(Instantiate(m_ExplosionPrefab, transform.position, Quaternion.identity), 3);
     }
 
+    //start the initialization process
     public void Initialize(Transform target)
     {
         m_TargetTransform = target;
