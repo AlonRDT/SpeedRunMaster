@@ -11,5 +11,6 @@ public class EndLevel : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         m_Manager.RaceComplete();
+        Destroy(gameObject);
     }
 }

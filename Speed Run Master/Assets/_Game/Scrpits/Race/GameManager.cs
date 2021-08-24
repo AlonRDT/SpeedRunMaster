@@ -302,7 +302,7 @@ public class GameManager : MonoBehaviour
 
 
         //stop fixed update. stops saving the ghost data
-        m_SceneIndex = 0;
+        m_IsGameStarted = false;
         Invoke("loadMainMenu", 4);
     }
 
