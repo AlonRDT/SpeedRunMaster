@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0007200976, g: 0.0008675759, b: 0.419518, a: 1}
+  m_IndirectSpecularColor: {r: 0.00066579843, g: 0.00086654566, b: 0.4194915, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -44785,7 +44785,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2609059777007720252, guid: 9979217591988834ca0ca4777e366ff0, type: 3}
       propertyPath: m_IsDebug
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782792314922638458, guid: 9979217591988834ca0ca4777e366ff0, type: 3}
+      propertyPath: m_Weapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782792314922638458, guid: 9979217591988834ca0ca4777e366ff0, type: 3}
+      propertyPath: m_PickupSprites.Array.size
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9979217591988834ca0ca4777e366ff0, type: 3}

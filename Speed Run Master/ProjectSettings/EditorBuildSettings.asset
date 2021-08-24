@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/TrackLab.unity
     guid: 454be366fc5e7284a8e0d8b78f83fdd4
+  - enabled: 1
+    path: Assets/_Scenes/PickupTestMap.unity
+    guid: 65a4fbc55dd68154c8a99b20f3193ec0
   m_configObjects: {}

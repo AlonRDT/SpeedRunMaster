@@ -1016,8 +1016,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1173772206320659015, guid: 9e973da4755bd1d41b893fd931421571, type: 3}
+      propertyPath: m_Weapons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173772206320659015, guid: 9e973da4755bd1d41b893fd931421571, type: 3}
+      propertyPath: m_Weapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 1173772206991504206}
+    - target: {fileID: 1173772206320659015, guid: 9e973da4755bd1d41b893fd931421571, type: 3}
+      propertyPath: m_Weapons.Array.data[3]
+      value: 
+      objectReference: {fileID: 1173772206991504205}
+    - target: {fileID: 1173772206320659015, guid: 9e973da4755bd1d41b893fd931421571, type: 3}
+      propertyPath: m_PickupSprites.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173772206320659015, guid: 9e973da4755bd1d41b893fd931421571, type: 3}
+      propertyPath: m_PickupSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: da28ed10239922f4782ad7f14f868d97, type: 3}
+    - target: {fileID: 1173772206320659015, guid: 9e973da4755bd1d41b893fd931421571, type: 3}
+      propertyPath: m_PickupSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1c643c5d9fbd13b419da56d94af4a899, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e973da4755bd1d41b893fd931421571, type: 3}
+--- !u!114 &1173772206991504205 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1173772206729510615, guid: 9e973da4755bd1d41b893fd931421571, type: 3}
+  m_PrefabInstance: {fileID: 1173772206991504204}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5973bc4537b4234bb8f77283c4bfbfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1173772206991504206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1173772206040005267, guid: 9e973da4755bd1d41b893fd931421571, type: 3}
+  m_PrefabInstance: {fileID: 1173772206991504204}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130ef75e065ee054d9cc7229b89587ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4224320819238264612
 PrefabInstance:
   m_ObjectHideFlags: 0

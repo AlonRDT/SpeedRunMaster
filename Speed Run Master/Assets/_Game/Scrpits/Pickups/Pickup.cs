@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public abstract class Pickup : MonoBehaviour
 {
@@ -8,7 +9,15 @@ public abstract class Pickup : MonoBehaviour
 
     protected void Start()
     {
-        m_Ammo = 0;
+        //if test map fill ammo
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            m_Ammo = 10;
+        }
+        else
+        {
+            m_Ammo = 0;
+        }
     }
 
     public void IncreaseAmmo()
