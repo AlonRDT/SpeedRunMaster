@@ -10,7 +10,11 @@ public class EndLevel : MonoBehaviour
     [SerializeField] private GameManager m_Manager;
     private void OnTriggerEnter(Collider other)
     {
-        m_Manager.RaceComplete();
-        Destroy(gameObject);
+        CarController car = other.GetComponent<CarController>();
+        if (car != null && car.IsPlayer() == true)
+        {
+            m_Manager.RaceComplete();
+            Destroy(gameObject);
+        }
     }
 }

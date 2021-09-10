@@ -362,7 +362,7 @@ MonoBehaviour:
   m_LineLength: 40
   m_JointFinalMaxDistancePrecentage: 0.3
   m_JointDeltaMaxDistancePredentage: 0.3
-  m_JointSpring: 50000
+  m_JointSpring: 100000
   m_JointDamper: 50000
   m_JointMassScale: 1
   m_JointAnchorLocation: {x: 0, y: 1, z: 0.5}
