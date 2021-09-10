@@ -389,7 +389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d99c90a7110211448971f8f44e0d44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rb: {fileID: 4238645626773296134}
   centerOfMass: 0.5
   motorForce: 1000
   breakForce: 4500
@@ -408,8 +407,29 @@ MonoBehaviour:
   m_PickupHandler: {fileID: 3552996515020136107}
   m_GrapplingHookPickup: {fileID: 3552996514829634970}
   m_JumpPickup: {fileID: 3552996513682008135}
-  audioSource: {fileID: 0}
-  drive: {fileID: 8300000, guid: a59b7d1b0aa9189439ae0561b9c2a2ab, type: 3}
+  baseStats:
+    TopSpeed: 10
+    Acceleration: 5
+    ReverseSpeed: 5
+    ReverseAcceleration: 5
+    AccelerationCurve: 4
+    Braking: 10
+    CoastingDrag: 4
+    Grip: 0.95
+    Steer: 5
+    AddedGravity: 1
+  CenterOfMass: {fileID: 2379259717151010486}
+  AirborneReorientationCoefficient: 3
+  DriftGrip: 0.4
+  DriftAdditionalSteer: 5
+  MinAngleToFinishDrift: 10
+  MinSpeedPercentToFinishDrift: 0.5
+  DriftControl: 10
+  DriftDampening: 10
+  SuspensionHeight: 0.2
+  SuspensionSpring: 20000
+  SuspensionDamp: 500
+  WheelsPositionVerticalOffset: 0
 --- !u!114 &4238645626773296133
 MonoBehaviour:
   m_ObjectHideFlags: 0
