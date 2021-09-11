@@ -72,8 +72,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -146,8 +144,6 @@ ScriptsOnlyBuild:
     - Class: 82
       Script: {instanceID: 0}
     - Class: 83
-      Script: {instanceID: 0}
-    - Class: 89
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -309,6 +305,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3746}
     - Class: 114
+      Script: {instanceID: 3760}
+    - Class: 114
       Script: {instanceID: 3780}
     - Class: 114
       Script: {instanceID: 3920}
@@ -357,6 +355,8 @@ ScriptsOnlyBuild:
     - Class: 199
       Script: {instanceID: 0}
     - Class: 205
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -1171,7 +1171,7 @@ ScriptsOnlyBuild:
     className: HelpWindow
   - hash:
       serializedVersion: 2
-      Hash: 0c0a1cd4bda7890d6e5e45a2f21fe8f4
+      Hash: 3bc1c98639faa0195729f703bdc43e46
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CarController
@@ -1542,4 +1542,4 @@ ScriptsOnlyBuild:
   - Assets/_Scenes/TrackMoon.unity
   - Assets/_Scenes/TrackLab.unity
   - Assets/_Scenes/PickupTestMap.unity
-  playerPath: D:/AI course/Builds/SpeedRunMaster/Speed Run Master.exe
+  playerPath: D:/AI course/Builds/SpeedRunMaster/pc/Speed Run Master.exe

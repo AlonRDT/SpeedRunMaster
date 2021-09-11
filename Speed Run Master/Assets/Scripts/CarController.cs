@@ -571,5 +571,11 @@ public class CarController : MonoBehaviour
             m_LastValidPosition = transform.position;
             m_LastValidRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
         }
+
+        if(m_CanMove == false)
+        {
+            Rigidbody.angularVelocity = Vector3.zero;
+            Rigidbody.velocity = Vector3.zero;
+        }
     }
 }

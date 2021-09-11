@@ -404,24 +404,24 @@ MonoBehaviour:
   m_GrapplingHookPickup: {fileID: 3552996514829634970}
   m_JumpPickup: {fileID: 3552996513682008135}
   baseStats:
-    TopSpeed: 15
+    TopSpeed: 30
     Acceleration: 7
     ReverseSpeed: 10
     ReverseAcceleration: 3
-    AccelerationCurve: 0.5
+    AccelerationCurve: 0.395
     Braking: 16
-    CoastingDrag: 5
-    Grip: 0.95
-    Steer: 4
+    CoastingDrag: 3
+    Grip: 0.06
+    Steer: 2
     AddedGravity: 1
   CenterOfMass: {fileID: 2379259717151010486}
-  AirborneReorientationCoefficient: 1
-  DriftGrip: 0.85
+  AirborneReorientationCoefficient: 0.73
+  DriftGrip: 0.37
   DriftAdditionalSteer: 0
-  MinAngleToFinishDrift: 29
-  MinSpeedPercentToFinishDrift: 0.95
-  DriftControl: 16
-  DriftDampening: 8
+  MinAngleToFinishDrift: 18.3
+  MinSpeedPercentToFinishDrift: 0.58
+  DriftControl: 4.6
+  DriftDampening: 3
   SuspensionHeight: 0.1
   SuspensionSpring: 20000
   SuspensionDamp: 500

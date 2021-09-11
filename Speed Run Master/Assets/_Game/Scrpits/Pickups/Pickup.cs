@@ -16,7 +16,7 @@ public abstract class Pickup : MonoBehaviour
         }
         else
         {
-            m_Ammo = 10;
+            m_Ammo = 0;
         }
     }
 

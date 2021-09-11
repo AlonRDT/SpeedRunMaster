@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Manager: {fileID: 0}
-  m_JumpPower: 25000
+  m_JumpPower: 12000
 --- !u!1 &1173772205717912508
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +919,7 @@ GameObject:
   - component: {fileID: 1173772206583558182}
   m_Layer: 0
   m_Name: ShieldMesh
-  m_TagString: Untagged
+  m_TagString: Destructor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
