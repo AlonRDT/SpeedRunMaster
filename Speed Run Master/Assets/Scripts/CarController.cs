@@ -13,11 +13,6 @@ public class CarController : MonoBehaviour
     private bool m_IsBreaking;
     private bool m_IsJumping;
     private bool m_IsGrappling;
-    public float centerOfMass = 0.5f;
-
-    public float motorForce;
-    public float breakForce;
-    public float maxSteerAngle;
 
     public WheelCollider frontLeftWheelCollider;
     public WheelCollider frontRightWheelCollider;
